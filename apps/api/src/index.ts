@@ -3,6 +3,7 @@ import dotenv from 'dotenv';
 import cors from 'cors';
 import helmet from 'helmet';
 import morgan from 'morgan';
+import adminRoutes from './routes/admin.routes';
 
 // Load environment variables
 dotenv.config();
@@ -22,6 +23,9 @@ app.use(morgan('dev'));
 app.get('/', (req: Request, res: Response) => {
   res.send('SahiDawa-India API is running successfully!');
 });
+
+// Admin Routes
+app.use('/api/v1/admin', adminRoutes);
 
 // 2. Health Check Route
 app.get('/health', (req: Request, res: Response) => {
