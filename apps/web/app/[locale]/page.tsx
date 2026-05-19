@@ -16,7 +16,6 @@ import {
     Activity,
     Search,
     MessageCircle,
-    ReceiptText,
 } from "lucide-react";
 
 import { useRouter, useParams } from "next/navigation";
@@ -116,9 +115,6 @@ export default function SahiDawaHome() {
               <Link href="/map" className="hover:text-emerald-600 transition-colors">
                 {tNav("pharmacy_map")}
               </Link>
-              <Link href="/compare" className="hover:text-emerald-600 transition-colors">
-                Compare Prices
-              </Link>
               <Link href="/reports/me" className="hover:text-emerald-600 transition-colors flex items-center gap-1">
                 <History size={14} /> My Reports
               </Link>
@@ -189,7 +185,7 @@ export default function SahiDawaHome() {
                 </button>
 
                 {/* ── Secondary Action Cards ── */}
-                <div className="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-5">
+                <div className="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
                     {/* Upload Photo */}
                     <button
                         onClick={() => handleNavigation("scan")}
@@ -243,23 +239,6 @@ export default function SahiDawaHome() {
                             </h3>
                             <p className="mt-0.5 text-sm leading-snug font-medium text-slate-500">
                                 {tHome("pharmacy_subtitle")}
-                            </p>
-                        </div>
-                    </button>
-
-                    {/* Compare Prices */}
-                    <button
-                        onClick={() => handleNavigation("compare")}
-                        className="group flex w-full items-center gap-5 rounded-3xl border border-slate-200 bg-white p-6 text-left transition-all hover:border-cyan-200 hover:shadow-lg hover:shadow-cyan-100/50 active:scale-95"
-                        aria-label="Compare medicine prices"
-                    >
-                        <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-cyan-50 text-cyan-600 transition-colors duration-300 group-hover:bg-cyan-500 group-hover:text-white">
-                            <ReceiptText size={28} strokeWidth={2.5} />
-                        </div>
-                        <div>
-                            <h3 className="text-lg font-bold text-slate-800">Compare Prices</h3>
-                            <p className="mt-0.5 text-sm leading-snug font-medium text-slate-500">
-                                Print patient receipt
                             </p>
                         </div>
                     </button>
