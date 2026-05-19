@@ -43,7 +43,6 @@ function formatRelativeTime(dateString: string | null): string {
     } else if (elapsed < msPerDay) {
         return `${Math.round(elapsed / msPerHour)}h ago`;
     } else {
-        // Fall back to a standard date view if it's older than 24 hours
         return past.toLocaleDateString(undefined, { month: "short", day: "numeric" });
     }
 }
@@ -104,25 +103,25 @@ export default function SahiDawaHome() {
                         </h1>
                     </div>
 
-          <div className="flex items-center gap-2 md:gap-4">
-            <nav className="hidden lg:flex items-center gap-6 text-sm font-semibold text-slate-600" aria-label="Main navigation">
-              <Link href="/how-it-works" className="hover:text-emerald-600 transition-colors">
-                {tNav("how_it_works")}
-              </Link>
-              <Link href="/alerts" className="hover:text-emerald-600 transition-colors">
-                {tNav("alerts")}
-              </Link>
-              <Link href="/map" className="hover:text-emerald-600 transition-colors">
-                {tNav("pharmacy_map")}
-              </Link>
-              <Link href="/reports/me" className="hover:text-emerald-600 transition-colors flex items-center gap-1">
-                <History size={14} /> My Reports
-              </Link>
-            </nav>
+                    <div className="flex items-center gap-2 md:gap-4">
+                        <nav className="hidden lg:flex items-center gap-6 text-sm font-semibold text-slate-600" aria-label="Main navigation">
+                            <Link href="/how-it-works" className="hover:text-emerald-600 transition-colors">
+                                {tNav("how_it_works")}
+                            </Link>
+                            <Link href="/alerts" className="hover:text-emerald-600 transition-colors">
+                                {tNav("alerts")}
+                            </Link>
+                            <Link href="/map" className="hover:text-emerald-600 transition-colors">
+                                {tNav("pharmacy_map")}
+                            </Link>
+                            <Link href="/reports/me" className="hover:text-emerald-600 transition-colors flex items-center gap-1">
+                                <History size={14} /> My Reports
+                            </Link>
+                        </nav>
 
                         <button
                             onClick={() => handleNavigation("health")}
-                            className="flex items-center gap-2 rounded-full bg-linear-to-r from-blue-500 to-purple-500 px-4 py-2 text-sm font-semibold text-white transition-all duration-200 hover:scale-105 hover:shadow-lg"
+                            className="flex items-center gap-2 rounded-full bg-gradient-to-r from-blue-500 to-purple-500 px-4 py-2 text-sm font-semibold text-white transition-all duration-200 hover:scale-105 hover:shadow-lg hover:shadow-purple-500/25"
                             aria-label="Open AI Health Assistant"
                         >
                             <MessageCircle size={16} />
@@ -160,7 +159,7 @@ export default function SahiDawaHome() {
                     className="group relative flex w-full items-center justify-between overflow-hidden rounded-3xl border border-emerald-500 bg-emerald-600 p-7 text-left text-white shadow-xl shadow-emerald-600/20 transition-all hover:shadow-emerald-600/40 active:scale-[0.99] md:p-8"
                     aria-label="Scan medicine"
                 >
-                    <div className="absolute inset-0 z-0 bg-linear-to-tr from-emerald-700 to-emerald-500"></div>
+                    <div className="absolute inset-0 z-0 bg-gradient-to-tr from-emerald-700 to-emerald-500"></div>
                     <div className="absolute -top-10 -right-10 h-40 w-40 rounded-full bg-white/10 blur-3xl"></div>
                     <div className="relative z-10 flex items-center gap-6">
                         <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-full bg-white/20 shadow-inner backdrop-blur-md transition-all duration-300 group-hover:scale-110 group-hover:rotate-3 md:h-20 md:w-20">
@@ -185,14 +184,14 @@ export default function SahiDawaHome() {
                 </button>
 
                 {/* ── Secondary Action Cards ── */}
-                <div className="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+                <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
                     {/* Upload Photo */}
                     <button
                         onClick={() => handleNavigation("scan")}
-                        className="group flex w-full items-center gap-5 rounded-3xl border border-slate-200 bg-white p-6 text-left transition-all hover:border-emerald-200 hover:shadow-lg hover:shadow-emerald-100/50 active:scale-95"
+                        className="group flex w-full items-center gap-5 rounded-3xl border border-slate-200 bg-white p-6 text-left transition-all duration-300 hover:-translate-y-1.5 hover:border-emerald-200 hover:shadow-xl hover:shadow-emerald-100/60 active:scale-[0.97] active:translate-y-0"
                         aria-label="Upload photo"
                     >
-                        <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-emerald-50 text-emerald-600 transition-colors duration-300 group-hover:bg-emerald-500 group-hover:text-white">
+                        <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-emerald-50 text-emerald-600 transition-all duration-300 group-hover:bg-emerald-500 group-hover:text-white group-hover:shadow-lg group-hover:shadow-emerald-400/30">
                             <Globe size={28} strokeWidth={2.5} />
                         </div>
                         <div>
@@ -208,10 +207,10 @@ export default function SahiDawaHome() {
                     {/* Voice Triage */}
                     <button
                         onClick={() => handleNavigation("voice")}
-                        className="group flex w-full items-center gap-5 rounded-3xl border border-slate-200 bg-white p-6 text-left transition-all hover:border-blue-200 hover:shadow-lg hover:shadow-blue-100/50 active:scale-95"
+                        className="group flex w-full items-center gap-5 rounded-3xl border border-slate-200 bg-white p-6 text-left transition-all duration-300 hover:-translate-y-1.5 hover:border-blue-200 hover:shadow-xl hover:shadow-blue-100/60 active:scale-[0.97] active:translate-y-0"
                         aria-label="Voice triage"
                     >
-                        <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-blue-50 text-blue-600 transition-colors duration-300 group-hover:bg-blue-500 group-hover:text-white">
+                        <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-blue-50 text-blue-600 transition-all duration-300 group-hover:bg-blue-500 group-hover:text-white group-hover:shadow-lg group-hover:shadow-blue-400/30">
                             <Mic size={28} strokeWidth={2.5} />
                         </div>
                         <div>
@@ -227,10 +226,10 @@ export default function SahiDawaHome() {
                     {/* Pharmacy Map */}
                     <button
                         onClick={() => handleNavigation("map")}
-                        className="group flex w-full items-center gap-5 rounded-3xl border border-slate-200 bg-white p-6 text-left transition-all hover:border-amber-200 hover:shadow-lg hover:shadow-amber-100/50 active:scale-95"
+                        className="group flex w-full items-center gap-5 rounded-3xl border border-slate-200 bg-white p-6 text-left transition-all duration-300 hover:-translate-y-1.5 hover:border-amber-200 hover:shadow-xl hover:shadow-amber-100/60 active:scale-[0.97] active:translate-y-0"
                         aria-label="Pharmacy map"
                     >
-                        <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-amber-50 text-amber-600 transition-colors duration-300 group-hover:bg-amber-500 group-hover:text-white">
+                        <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-amber-50 text-amber-600 transition-all duration-300 group-hover:bg-amber-500 group-hover:text-white group-hover:shadow-lg group-hover:shadow-amber-400/30">
                             <MapPin size={28} strokeWidth={2.5} />
                         </div>
                         <div>
@@ -246,10 +245,10 @@ export default function SahiDawaHome() {
                     {/* Report Fake Medicine */}
                     <button
                         onClick={() => handleNavigation("report")}
-                        className="group flex w-full items-center gap-5 rounded-3xl border border-slate-200 bg-white p-6 text-left transition-all hover:border-red-200 hover:shadow-lg hover:shadow-red-100/50 active:scale-95"
+                        className="group flex w-full items-center gap-5 rounded-3xl border border-slate-200 bg-white p-6 text-left transition-all duration-300 hover:-translate-y-1.5 hover:border-red-200 hover:shadow-xl hover:shadow-red-100/60 active:scale-[0.97] active:translate-y-0"
                         aria-label="Report fake medicine"
                     >
-                        <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-red-50 text-red-600 transition-colors duration-300 group-hover:bg-red-500 group-hover:text-white">
+                        <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-red-50 text-red-600 transition-all duration-300 group-hover:bg-red-500 group-hover:text-white group-hover:shadow-lg group-hover:shadow-red-400/30">
                             <AlertTriangle size={28} strokeWidth={2.5} />
                         </div>
                         <div>
@@ -262,15 +261,17 @@ export default function SahiDawaHome() {
                 </div>
 
                 {/* ── AI Health Assistant CTA Banner ── */}
-                <div className="group relative mt-8 overflow-hidden rounded-3xl border border-blue-200/60 bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 p-6 shadow-sm transition-shadow duration-300 hover:shadow-lg hover:shadow-blue-200/40 sm:p-8 md:p-10">
+                <div className="group relative mt-8 overflow-hidden rounded-3xl border border-purple-200/60 bg-gradient-to-br from-purple-50 via-blue-50 to-indigo-100/80 p-6 shadow-md shadow-purple-100/50 transition-all duration-300 hover:shadow-xl hover:shadow-purple-200/40 sm:p-8 md:p-10">
                     {/* Decorative background orbs */}
-                    <div className="pointer-events-none absolute -right-16 -top-16 h-56 w-56 rounded-full bg-blue-200/30 blur-3xl transition-transform duration-700 group-hover:scale-110" />
-                    <div className="pointer-events-none absolute -bottom-12 -left-12 h-40 w-40 rounded-full bg-purple-200/30 blur-3xl transition-transform duration-700 group-hover:scale-110" />
+                    <div className="pointer-events-none absolute -right-16 -top-16 h-64 w-64 rounded-full bg-purple-300/20 blur-3xl transition-transform duration-700 group-hover:scale-110" />
+                    <div className="pointer-events-none absolute -bottom-12 -left-12 h-48 w-48 rounded-full bg-blue-300/20 blur-3xl transition-transform duration-700 group-hover:scale-110" />
+                    {/* Center glow */}
+                    <div className="pointer-events-none absolute left-1/2 top-1/2 h-40 w-72 -translate-x-1/2 -translate-y-1/2 rounded-full bg-indigo-200/30 blur-3xl" />
 
                     <div className="relative z-10 flex flex-col items-start gap-5 sm:flex-row sm:items-center sm:justify-between sm:gap-6">
                         <div className="flex items-center gap-4 sm:gap-5">
                             {/* Icon container */}
-                            <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-blue-500 to-purple-600 shadow-lg shadow-blue-500/25 transition-transform duration-300 group-hover:scale-105 sm:h-16 sm:w-16">
+                            <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-purple-500 to-blue-600 shadow-lg shadow-purple-500/30 transition-all duration-300 group-hover:scale-105 group-hover:shadow-xl group-hover:shadow-purple-500/35 sm:h-16 sm:w-16">
                                 <MessageCircle size={28} className="text-white drop-shadow-sm" />
                             </div>
                             <div className="space-y-1">
@@ -278,12 +279,13 @@ export default function SahiDawaHome() {
                                     <h3 className="text-xl font-extrabold tracking-tight text-slate-800 sm:text-2xl">
                                         AI Health Assistant
                                     </h3>
-                                    <span className="inline-flex items-center gap-1 rounded-full bg-blue-100 px-2.5 py-0.5 text-[11px] font-bold uppercase tracking-wider text-blue-600">
+                                    {/* Animated AI badge */}
+                                    <span className="inline-flex items-center gap-1.5 rounded-full bg-purple-100 px-2.5 py-0.5 text-[11px] font-bold uppercase tracking-wider text-purple-700 ring-1 ring-purple-200/60">
                                         <span className="relative flex h-1.5 w-1.5">
-                                            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-blue-400 opacity-75" />
-                                            <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-blue-500" />
+                                            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-purple-500 opacity-60" />
+                                            <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-purple-600" />
                                         </span>
-                                        AI
+                                        Live AI
                                     </span>
                                 </div>
                                 <p className="text-sm font-medium leading-relaxed text-slate-500 sm:text-base">
@@ -293,10 +295,11 @@ export default function SahiDawaHome() {
                         </div>
                         <button
                             onClick={() => handleNavigation("health")}
-                            className="group/btn flex w-full items-center justify-center gap-2 rounded-2xl bg-gradient-to-r from-blue-500 to-purple-600 px-8 py-3.5 text-base font-bold text-white shadow-md shadow-blue-500/20 transition-all duration-200 hover:scale-[1.03] hover:shadow-lg hover:shadow-blue-500/30 active:scale-[0.98] sm:w-auto"
+                            className="group/btn flex w-full items-center justify-center gap-2 rounded-2xl bg-gradient-to-r from-purple-500 to-blue-600 px-8 py-3.5 text-base font-bold text-white shadow-md shadow-purple-500/25 transition-all duration-300 hover:scale-[1.04] hover:shadow-xl hover:shadow-purple-500/30 active:scale-[0.98] sm:w-auto"
                         >
+                            <MessageCircle size={18} />
                             Chat Now
-                            <ChevronRight size={18} className="transition-transform duration-200 group-hover/btn:translate-x-0.5" />
+                            <ChevronRight size={18} className="transition-transform duration-200 group-hover/btn:translate-x-1" />
                         </button>
                     </div>
                 </div>
@@ -319,7 +322,7 @@ export default function SahiDawaHome() {
 
                 {/* ── Live Alerts Panel (full-width) ── */}
                 <div className="mt-8 mb-20">
-                    <div className="bg-white border border-slate-200 rounded-3xl shadow-sm overflow-hidden flex flex-col h-[420px]">
+                    <div className="bg-white border border-slate-200 rounded-3xl shadow-sm overflow-hidden flex flex-col">
                         <div className="px-6 py-5 border-b border-slate-100 flex items-center justify-between bg-slate-50/50">
                             <div className="flex items-center gap-2">
                                 <Activity size={20} className="text-red-500" />
@@ -338,23 +341,21 @@ export default function SahiDawaHome() {
                                     homepageAlerts.map((alert) => (
                                         <div
                                             key={alert.id}
-                                            className="bg-white border border-slate-100 rounded-2xl p-4 shadow-sm flex items-start gap-4 relative overflow-hidden group hover:shadow-md transition-shadow cursor-pointer"
+                                            className="bg-white border border-slate-100 rounded-2xl p-4 shadow-sm flex items-start gap-4 relative overflow-hidden group hover:shadow-md transition-all duration-200 cursor-pointer hover:-translate-y-0.5"
                                         >
                                             {/* Left edge colored strip */}
-                                            <div className={`absolute left-0 top-0 bottom-0 w-1.5 ${
-                                                alert.brand_name === 'SYSTEM_UPDATE'
-                                                    ? 'bg-blue-500'
-                                                    : (alert.cdsco_approval_status === 'banned' || alert.is_counterfeit_alert)
+                                            <div className={`absolute left-0 top-0 bottom-0 w-1.5 ${alert.brand_name === 'SYSTEM_UPDATE'
+                                                ? 'bg-blue-500'
+                                                : (alert.cdsco_approval_status === 'banned' || alert.is_counterfeit_alert)
                                                     ? 'bg-red-500' : 'bg-orange-400'
-                                            }`} />
+                                                }`} />
 
-                                            <div className={`w-10 h-10 rounded-full flex items-center justify-center shrink-0 transition-colors ${
-                                                alert.brand_name === 'SYSTEM_UPDATE'
-                                                    ? 'bg-blue-50 text-blue-500 group-hover:bg-blue-100'
-                                                    : (alert.cdsco_approval_status === 'banned' || alert.is_counterfeit_alert)
-                                                        ? 'bg-red-50 text-red-500 group-hover:bg-red-100'
-                                                        : 'bg-orange-50 text-orange-500 group-hover:bg-orange-100'
-                                            }`}>
+                                            <div className={`w-10 h-10 rounded-full flex items-center justify-center shrink-0 transition-colors ${alert.brand_name === 'SYSTEM_UPDATE'
+                                                ? 'bg-blue-50 text-blue-500 group-hover:bg-blue-100'
+                                                : (alert.cdsco_approval_status === 'banned' || alert.is_counterfeit_alert)
+                                                    ? 'bg-red-50 text-red-500 group-hover:bg-red-100'
+                                                    : 'bg-orange-50 text-orange-500 group-hover:bg-orange-100'
+                                                }`}>
                                                 {alert.brand_name === 'SYSTEM_UPDATE' ? (
                                                     <Globe size={20} strokeWidth={2.5} />
                                                 ) : (
@@ -374,14 +375,25 @@ export default function SahiDawaHome() {
                                         </div>
                                     ))
                                 ) : (
-                                    <p className="text-center text-sm text-slate-400 py-12 sm:col-span-2">No current regulatory alerts recorded.</p>
+                                    /* ── Improved Empty State ── */
+                                    <div className="flex flex-col items-center justify-center py-8 sm:col-span-2">
+                                        <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-emerald-50 text-emerald-500 mb-3 shadow-sm ring-1 ring-emerald-100">
+                                            <ShieldCheck size={26} strokeWidth={2} />
+                                        </div>
+                                        <p className="text-base font-bold text-slate-700">All clear!</p>
+                                        <p className="text-sm text-slate-400 mt-1 text-center max-w-xs">No active regulatory alerts right now. Stay safe and verify your medicines.</p>
+                                    </div>
                                 )}
                             </div>
                         </div>
+
+                        {/* ── View Full Alert Log CTA ── */}
                         <div className="p-4 bg-white border-t border-slate-100">
                             <Link href="/alerts" className="block w-full">
-                                <button className="w-full py-3 bg-slate-50 text-slate-700 font-bold rounded-xl hover:bg-slate-100 transition-colors cursor-pointer">
+                                <button className="group/log flex w-full items-center justify-center gap-2 py-3 rounded-xl border border-slate-200 bg-slate-50 text-slate-700 font-bold transition-all duration-200 hover:bg-slate-100 hover:border-slate-300 hover:shadow-sm hover:text-slate-900 cursor-pointer">
+                                    <Activity size={15} className="text-slate-400 group-hover/log:text-red-500 transition-colors duration-200" />
                                     View Full Alert Log
+                                    <ChevronRight size={16} className="text-slate-400 transition-transform duration-200 group-hover/log:translate-x-1" />
                                 </button>
                             </Link>
                         </div>
@@ -392,83 +404,78 @@ export default function SahiDawaHome() {
             {/* Spacer for mobile nav */}
             <div className="h-16 md:hidden"></div>
 
-      {/* ── Mobile Bottom Navigation ── */}
-      <nav
-        className="md:hidden fixed bottom-0 left-0 right-0 bg-white/90 backdrop-blur-md border-t border-slate-200/60 flex justify-around px-2 py-3 items-center z-50 pb-[env(safe-area-inset-bottom)]"
-        aria-label="Mobile navigation"
-      >
-        <Link
-          href="/"
-          className="flex flex-col items-center gap-1.5 w-16 group"
-          aria-label="Home"
-        >
-          <div className="text-emerald-600 group-hover:-translate-y-1 transition-transform">
-            <Home size={24} strokeWidth={2.5} />
-          </div>
+            {/* ── Mobile Bottom Navigation ── */}
+            <nav
+                className="md:hidden fixed bottom-0 left-0 right-0 bg-white/90 backdrop-blur-md border-t border-slate-200/60 flex justify-around px-2 py-3 items-center z-50 pb-[env(safe-area-inset-bottom)]"
+                aria-label="Mobile navigation"
+            >
+                <Link
+                    href="/"
+                    className="flex flex-col items-center gap-1.5 w-16 group"
+                    aria-label="Home"
+                >
+                    <div className="text-emerald-600 group-hover:-translate-y-1 transition-transform">
+                        <Home size={24} strokeWidth={2.5} />
+                    </div>
+                    <span className="text-[11px] font-bold text-emerald-600">
+                        Home
+                    </span>
+                </Link>
 
-          <span className="text-[11px] font-bold text-emerald-600">
-            Home
-          </span>
-        </Link>
+                <Link
+                    href="/scan"
+                    className="flex flex-col items-center gap-1.5 w-16 group text-slate-400 hover:text-slate-600 transition-colors"
+                    aria-label="Scans"
+                >
+                    <div className="group-hover:-translate-y-1 transition-transform">
+                        <History size={24} strokeWidth={2} />
+                    </div>
+                    <span className="text-[11px] font-semibold">
+                        Scans
+                    </span>
+                </Link>
 
-        <Link
-          href="/scan"
-          className="flex flex-col items-center gap-1.5 w-16 group text-slate-400 hover:text-slate-600 transition-colors"
-          aria-label="Scans"
-        >
-          <div className="group-hover:-translate-y-1 transition-transform">
-            <History size={24} strokeWidth={2} />
-          </div>
+                <Link
+                    href="/map"
+                    className="flex flex-col items-center gap-1.5 w-16 group text-slate-400 hover:text-amber-600 transition-colors"
+                    aria-label="Map"
+                >
+                    <div className="group-hover:-translate-y-1 transition-transform">
+                        <MapPin size={24} strokeWidth={2} />
+                    </div>
+                    <span className="text-[11px] font-semibold">
+                        Map
+                    </span>
+                </Link>
 
-          <span className="text-[11px] font-semibold">
-            Scans
-          </span>
-        </Link>
+                <Link
+                    href="/alerts"
+                    className="flex flex-col items-center gap-1.5 w-16 group text-slate-400 hover:text-red-500 transition-colors"
+                    aria-label="Alerts"
+                >
+                    <div className="relative group-hover:-translate-y-1 transition-transform">
+                        <Bell size={24} strokeWidth={2} />
+                        <span className="absolute top-0 right-0.5 w-2 h-2 bg-red-500 border border-white rounded-full animate-pulse"></span>
+                    </div>
+                    <span className="text-[11px] font-semibold">
+                        Alerts
+                    </span>
+                </Link>
 
-        <Link
-          href="/map"
-          className="flex flex-col items-center gap-1.5 w-16 group text-slate-400 hover:text-amber-600 transition-colors"
-          aria-label="Map"
-        >
-          <div className="group-hover:-translate-y-1 transition-transform">
-            <MapPin size={24} strokeWidth={2} />
-          </div>
-
-          <span className="text-[11px] font-semibold">
-            Map
-          </span>
-        </Link>
-
-        <Link
-          href="/alerts"
-          className="flex flex-col items-center gap-1.5 w-16 group text-slate-400 hover:text-red-500 transition-colors"
-          aria-label="Alerts"
-        >
-          <div className="relative group-hover:-translate-y-1 transition-transform">
-            <Bell size={24} strokeWidth={2} />
-            <span className="absolute top-0 right-0.5 w-2 h-2 bg-red-500 border border-white rounded-full animate-pulse"></span>
-          </div>
-
-          <span className="text-[11px] font-semibold">
-            Alerts
-          </span>
-        </Link>
-
-        <Link
-          href="/profile"
-          className="flex flex-col items-center gap-1.5 w-16 group text-slate-400 hover:text-emerald-600 transition-colors"
-          aria-label="Profile"
-        >
-          <div className="group-hover:-translate-y-1 transition-transform">
-            <User size={24} strokeWidth={2} />
-          </div>
-
-          <span className="text-[11px] font-semibold">
-            Profile
-          </span>
-        </Link>
-      </nav>
-      <Footer />
-    </div>
-  );
+                <Link
+                    href="/profile"
+                    className="flex flex-col items-center gap-1.5 w-16 group text-slate-400 hover:text-emerald-600 transition-colors"
+                    aria-label="Profile"
+                >
+                    <div className="group-hover:-translate-y-1 transition-transform">
+                        <User size={24} strokeWidth={2} />
+                    </div>
+                    <span className="text-[11px] font-semibold">
+                        Profile
+                    </span>
+                </Link>
+            </nav>
+            <Footer />
+        </div>
+    );
 }
